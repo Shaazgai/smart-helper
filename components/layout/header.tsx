@@ -46,7 +46,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
+        'sticky top-0 z-50 px-8 md:px-12 w-full transition-all duration-300',
         isScrolled
           ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b'
           : 'bg-transparent'
@@ -126,14 +126,14 @@ export function Header() {
           <MainNav className="hidden md:flex" />
         </div>
         <div className="flex items-center gap-2">
-          <div className="relative hidden md:flex w-40 lg:w-64">
+          {/* <div className="relative hidden md:flex w-40 lg:w-64">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
               placeholder={t('search')}
               className="w-full rounded-md pl-8"
             />
-          </div>
+          </div> */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -177,9 +177,9 @@ export function Header() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button variant="default" asChild>
+          {/* <Button variant="default" asChild>
             <Link href="/sign-in">{t('signin')}</Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </header>

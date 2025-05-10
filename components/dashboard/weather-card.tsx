@@ -10,14 +10,14 @@ export function WeatherCard() {
   // Mock data - would be replaced with API data
   const weatherData = {
     location: 'Улаанбаатар',
-    temperature: -2,
+    temperature: 24,
     condition: 'cloudy',
-    high: 4,
-    low: -6,
+    high: 24,
+    low: 7,
     forecast: [
-      { day: 'Өнөөдөр', temp: -2, condition: 'cloudy' },
-      { day: 'Маргааш', temp: 0, condition: 'sunny' },
-      { day: 'Нөгөөдөр', temp: 2, condition: 'rain' },
+      { day: 'Өнөөдөр', temp: 24, condition: 'cloudy' },
+      { day: 'Маргааш', temp: 19, condition: 'rain' },
+      { day: 'Нөгөөдөр', temp: 2, condition: 'sunny' },
     ]
   };
   

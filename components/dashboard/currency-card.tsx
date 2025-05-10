@@ -9,10 +9,10 @@ export function CurrencyCard() {
   
   // Mock data - would be replaced with API data
   const currencyData = [
-    { code: 'USD', name: 'Ам.Доллар', rate: 3450, change: 5 },
-    { code: 'EUR', name: 'Евро', rate: 3720, change: -2 },
-    { code: 'CNY', name: 'Юань', rate: 475, change: 1.2 },
-    { code: 'RUB', name: 'Рубль', rate: 38, change: 0.5 },
+    { code: 'USD', name: 'Ам.Доллар', rate: 3572.07, change: 1.2 },
+    { code: 'EUR', name: 'Евро', rate: 4058.59, change: 2.62 },
+    { code: 'CNY', name: 'Юань', rate: 494.2, change: 4.14 },
+    { code: 'RUB', name: 'Рубль', rate: 44.21, change: 1.06 },
   ];
   
   return (
@@ -35,9 +35,9 @@ export function CurrencyCard() {
               <div className="flex items-center gap-2">
                 <span className="font-semibold">{currency.rate}₮</span>
                 <div className={`flex items-center text-xs ${
-                  currency.change > 0 ? 'text-green-500' : 'text-red-500'
+                  currency.change >= 0 ? 'text-green-500' : 'text-red-500'
                 }`}>
-                  {currency.change > 0 ? 
+                  {currency.change >= 0 ? 
                     <TrendingUp className="h-3 w-3 mr-1" /> : 
                     <TrendingDown className="h-3 w-3 mr-1" />
                   }

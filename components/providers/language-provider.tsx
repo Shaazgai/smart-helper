@@ -19,9 +19,9 @@ const LanguageContext = createContext<LanguageContextType>({
 const translations: Record<Language, Record<string, string>> = {
   mn: {
     'app.title': 'Мэдээллийн Портал',
-    'dashboard': 'Хянах самбар',
+    'dashboard': 'Нүүр хуудас',
     'news': 'Мэдээ',
-    'chat': 'Чат',
+    'chat': 'Ухаалаг туслах',
     'performance': 'Гүйцэтгэл',
     'settings': 'Тохиргоо',
     'weather': 'Цаг агаар',
@@ -42,9 +42,9 @@ const translations: Record<Language, Record<string, string>> = {
   },
   en: {
     'app.title': 'Information Portal',
-    'dashboard': 'Dashboard',
+    'dashboard': 'Home page',
     'news': 'News',
-    'chat': 'Chat',
+    'chat': 'Smart Assistant',
     'performance': 'Performance',
     'settings': 'Settings',
     'weather': 'Weather',
