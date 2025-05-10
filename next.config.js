@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  images: { unoptimized: true },
-  cache: false
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    images: { unoptimized: true },
+    cache: false
 };
 
-module.exports = nextConfig;
+module.exports = {
+    env: {
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    },
+}
