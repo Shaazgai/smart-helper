@@ -37,12 +37,12 @@ export function Footer({ className }: { className?: string }) {
               >
                 {t('chat')}
               </Link>
-              <Link
+              {/* <Link
                 href="/performance"
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
                 {t('performance')}
-              </Link>
+              </Link> */}
             </nav>
             <nav className="flex flex-col gap-2">
               <h3 className="font-medium">{t('settings')}</h3>

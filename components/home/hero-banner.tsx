@@ -25,7 +25,7 @@ export function HeroBanner() {
                 Туслахтай ярилцах
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="text-white border-white hover:bg-white/10">
+            <Button asChild size="lg" variant="outline" className="text-blue-600 border-white hover:bg-white/10">
               <Link href="/news">
                 Мэдээ үзэх
               </Link>
