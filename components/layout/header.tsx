@@ -13,7 +13,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { MainNav } from '@/components/layout/main-nav';
@@ -46,7 +45,7 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 px-8 md:px-12 w-full transition-all duration-300',
+        'sticky top-0 z-50 px-8 md:px-24 w-full transition-all duration-300',
         isScrolled
           ? 'bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b'
           : 'bg-transparent'

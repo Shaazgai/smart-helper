@@ -10,7 +10,7 @@ export function Footer({ className }: { className?: string }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={cn('border-t px-8 md:px-12', className)}>
+    <footer className={cn('border-t px-8 md:px-24', className)}>
       <div className="container py-8 md:py-12">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="flex flex-col gap-2">
@@ -65,13 +65,13 @@ export function Footer({ className }: { className?: string }) {
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
-                info@example.mn
+                b21fa1704@ufenu.edu.mn
               </Link>
               <Link
                 href="#"
                 className="text-sm text-muted-foreground hover:text-foreground"
               >
-                +976 7755-8899
+                +976 8654-6576
               </Link>
             </nav>
           </div>
