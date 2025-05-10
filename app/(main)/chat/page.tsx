@@ -53,35 +53,51 @@ export default function ChatPage() {
     setInput('');
     setIsLoading(true);
     
-    // In a real implementation, this would make an API call to the OpenAI service
-    // This is a mock response for demonstration purposes
-    setTimeout(() => {
+    try {
+      // Format messages for OpenAI API
+      const apiMessages = messages.concat(userMessage).map(msg => ({
+        role: msg.role,
+        content: msg.content
+      }));
+      
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: apiMessages,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+      
+      const data = await response.json();
+      
       const botResponse: Message = {
-        id: (Date.now() + 1).toString(),
-        content: getMockResponse(input),
+        id: Date.now().toString(),
+        content: data.content,
         role: 'assistant',
         timestamp: new Date(),
       };
       
       setMessages((prev) => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Error:', error);
+      
+      // Show error message to user
+      const errorMessage: Message = {
+        id: Date.now().toString(),
+        content: 'Уучлаарай, алдаа гарлаа. Дахин оролдоно уу.',
+        role: 'assistant',
+        timestamp: new Date(),
+      };
+      
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1000);
-  };
-  
-  // Mock function to simulate responses
-  const getMockResponse = (query: string) => {
-    const lowerQuery = query.toLowerCase();
-    
-    if (lowerQuery.includes('цаг агаар') || lowerQuery.includes('температур')) {
-      return 'Өнөөдөр Улаанбаатар хотод үүлшинэ, цасан шуурга шуурахгүй. Агаарын температур -2..0 градус байна. Салхи баруун хойноос 4-8 м/с.';
-    } else if (lowerQuery.includes('валют') || lowerQuery.includes('ханш')) {
-      return 'Өнөөдрийн валютын ханш: 1 USD = 3,450₮, 1 EUR = 3,720₮, 1 CNY = 475₮, 1 RUB = 38₮';
-    } else if (lowerQuery.includes('шатахуун') || lowerQuery.includes('бензин')) {
-      return 'Өнөөдрийн шатахууны үнэ: A-92: 2,150₮, A-95: 2,350₮, Дизель: 2,450₮';
-    } else if (lowerQuery.includes('замын') || lowerQuery.includes('түгжрэл')) {
-      return 'Энхтайвны гүүрэн дээр зам засварын ажил хийгдэж байгаа тул түгжрэл үүсч байна. Жуулчны гудамж, Бага тойруу дээр хөдөлгөөн хэвийн байна.';
-    } else {
-      return 'Уучлаарай, таны асуултыг бүрэн ойлгосонгүй. Та асуултаа дахин, тодорхой болгон асууна уу?';
     }
   };
 
