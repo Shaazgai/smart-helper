@@ -25,11 +25,11 @@ export function MainNav({ className }: { className?: string }) {
       label: t('chat'),
       active: pathname === '/chat',
     },
-    {
-      href: '/performance',
-      label: t('performance'),
-      active: pathname === '/performance',
-    },
+    // {
+    //   href: '/performance',
+    //   label: t('performance'),
+    //   active: pathname === '/performance',
+    // },
   ];
 
   return (
