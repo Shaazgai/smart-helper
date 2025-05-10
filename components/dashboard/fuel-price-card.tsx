@@ -9,9 +9,9 @@ export function FuelPriceCard() {
   
   // Mock data - would be replaced with API data
   const fuelData = [
-    { type: 'A-92', price: 2150, change: '+50₮' },
-    { type: 'A-95', price: 2350, change: '+30₮' },
-    { type: 'Дизель', price: 2450, change: '0₮' },
+    { type: 'A-92', price: 2390, change: '0₮' },
+    { type: 'A-95', price: 4210, change: '+1440₮' },
+    { type: 'Дизель', price: 4030, change: '+1190₮' },
   ];
   
   return (

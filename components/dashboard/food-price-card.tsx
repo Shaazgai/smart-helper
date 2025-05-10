@@ -9,12 +9,11 @@ export function FoodPriceCard() {
   
   // Mock data - would be replaced with API data
   const foodData = [
-    { name: 'Гурил (1-р зэрэг)', price: 1850, change: -2.5 },
-    { name: 'Хонины мах (кг)', price: 14500, change: 5.2 },
-    { name: 'Төмс (кг)', price: 2200, change: 0 },
-    { name: 'Элсэн чихэр (кг)', price: 3500, change: 2.1 },
+    { name: 'Гурил (1-р зэрэг)', price: 2426, change: 0 },
+    { name: 'Хонины мах (кг)', price: 16500, change: 3.0 },
+    { name: 'Төмс (кг)', price: 1754, change: 8.3 },
+    { name: 'Элсэн чихэр (кг)', price: 5042, change: 90.0 },
   ];
-  
   return (
     <Card>
       <CardHeader className="bg-gradient-to-r from-purple-400 to-indigo-500 text-white">

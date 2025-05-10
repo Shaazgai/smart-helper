@@ -10,7 +10,7 @@ export function Footer({ className }: { className?: string }) {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={cn('border-t', className)}>
+    <footer className={cn('border-t px-8 md:px-12', className)}>
       <div className="container py-8 md:py-12">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="flex flex-col gap-2">
