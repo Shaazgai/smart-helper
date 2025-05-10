@@ -31,8 +31,8 @@ export function FoodPriceCard() {
               <div className="text-right">
                 <div className="font-semibold">{item.price}₮</div>
                 <div className={`text-xs ${
-                  item.change > 0 ? 'text-red-500' : 
-                  item.change < 0 ? 'text-green-500' : 'text-muted-foreground'
+                  item.change < 0 ? 'text-red-500' : 
+                  item.change >= 0 ? 'text-green-500' : 'text-muted-foreground'
                 }`}>
                   {item.change > 0 ? '+' : ''}{item.change}%
                 </div>
