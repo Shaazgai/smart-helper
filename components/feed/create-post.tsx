@@ -60,7 +60,7 @@ export function CreatePost({ currentUser, onCreatePost }: CreatePostProps) {
               onClick={expandTextarea}
               onFocus={expandTextarea}
               onInput={handleTextareaInput}
-              placeholder="What's on your mind?"
+              placeholder="Санал гомдлоо энд бичнэ үү."
               className="min-h-[40px] w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               rows={isExpanded ? 3 : 1}
             />

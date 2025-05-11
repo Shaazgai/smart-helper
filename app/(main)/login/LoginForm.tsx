@@ -1,64 +1,113 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginForm() {
+  const router = useRouter();
+  const { login, register, isAuthenticated, showRegistrationReminder, setReminder } = useAuth();
+  
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = () => {
-    // Clear previous error
+  // Redirect if already authenticated
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     router.push('/feed');
+  //   }
+  // }, [isAuthenticated, router]);
+
+  // Display registration reminder if needed
+  useEffect(() => {
+    if (showRegistrationReminder && !isAuthenticated) {
+      setIsLogin(false);
+    }
+  }, [showRegistrationReminder, isAuthenticated]);
+
+  const handleSubmit = async () => {
+    // Clear previous messages
     setErrorMsg('');
+    setSuccessMsg('');
+    setIsLoading(true);
     
     // Simple validation
     if (!email) {
       setErrorMsg('И-мэйл заавал оруулна уу');
+      setIsLoading(false);
       return;
     }
     
     if (!password) {
       setErrorMsg('Нууц үг заавал оруулна уу');
+      setIsLoading(false);
       return;
     }
     
     if (!isLogin) {
       if (!name) {
         setErrorMsg('Нэр заавал оруулна уу');
+        setIsLoading(false);
         return;
       }
       
       if (!confirmPassword) {
         setErrorMsg('Нууц үгээ давтан оруулна уу');
+        setIsLoading(false);
         return;
       }
       
       if (password !== confirmPassword) {
         setErrorMsg('Нууц үг таарахгүй байна');
+        setIsLoading(false);
         return;
+      }
+      
+      // Registration logic
+      const success = await register(name, email, password);
+      if (success) {
+        setSuccessMsg('Амжилттай бүртгэгдлээ!');
+        setTimeout(() => {
+          router.push('/feed');
+        }, 1500);
+      } else {
+        setErrorMsg('И-мэйл хаяг бүртгэлтэй байна');
+      }
+    } else {
+      // Login logic
+      const success = await login(email, password);
+      if (success) {
+        setSuccessMsg('Амжилттай нэвтэрлээ!');
+        setTimeout(() => {
+          router.push('/feed');
+        }, 1500);
+      } else {
+        setErrorMsg('И-мэйл эсвэл нууц үг буруу байна');
       }
     }
     
-    // Success case - here you would call your API
-    alert(isLogin ? 'Амжилттай нэвтэрлээ!' : 'Амжилттай бүртгэгдлээ!');
-    
-    // Reset form
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
-    setName('');
+    setIsLoading(false);
   };
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
     setErrorMsg('');
+    setSuccessMsg('');
     setEmail('');
     setPassword('');
     setConfirmPassword('');
     setName('');
+    
+    // Dismiss reminder when toggling to login
+    if (!isLogin) {
+      setReminder(false);
+    }
   };
 
   return (
@@ -72,6 +121,20 @@ export default function LoginForm() {
         {errorMsg && (
           <div className="mb-4 p-2 bg-red-100 border border-red-400 text-red-700 rounded">
             {errorMsg}
+          </div>
+        )}
+        
+        {/* Success message display */}
+        {successMsg && (
+          <div className="mb-4 p-2 bg-green-100 border border-green-400 text-green-700 rounded">
+            {successMsg}
+          </div>
+        )}
+        
+        {/* Registration reminder */}
+        {showRegistrationReminder && !isLogin && !isAuthenticated && (
+          <div className="mb-4 p-2 bg-blue-100 border border-blue-400 text-blue-700 rounded">
+            Та бүртгүүлснээр бүх үйлчилгээг бүрэн ашиглах боломжтой
           </div>
         )}
         
@@ -118,7 +181,7 @@ export default function LoginForm() {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-0 focus:ring-gray-700"
+              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
               placeholder="••••••"
             />
           </div>
@@ -134,7 +197,7 @@ export default function LoginForm() {
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-0 focus:ring-gray-700"
+                className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-gray-700"
                 placeholder="••••••"
               />
             </div>
@@ -143,9 +206,10 @@ export default function LoginForm() {
           {/* Submit button */}
           <button
             onClick={handleSubmit}
-            className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-black focus:outline-none"
+            disabled={isLoading}
+            className={`w-full ${isLoading ? 'bg-gray-400' : 'bg-black hover:bg-gray-800'} text-white py-2 px-4 rounded-md focus:outline-none transition-colors`}
           >
-            {isLogin ? 'Нэвтрэх' : 'Бүртгүүлэх'}
+            {isLoading ? 'Уншиж байна...' : (isLogin ? 'Нэвтрэх' : 'Бүртгүүлэх')}
           </button>
           
           {/* Forgot password (only for login) */}
