@@ -16,15 +16,8 @@ export function Footer({ className }: { className?: string }) {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
           <div className="flex flex-col gap-2">
             <Link href="/" className="flex items-center gap-2">
-              <Globe className="h-6 w-6 text-primary" />
-              <span className="font-bold text-xl">{t('app.title')}</span>
-              {/* <Image
-                src="/images/logo.png" // Replace with actual image path
-                alt="Logo" 
-                width={120}
-                height={40}
-                className="relative mr-60"
-              /> */}
+              <Globe className="h-6 w-6 text-[#015198]" />
+              <span className="font-bold text-xl text-[#015198]">{t('app.title')}</span>
             </Link>
             <p className="text-muted-foreground">
               Өдөр тутмын мэдээлэл, ухаалаг туслах

@@ -14,20 +14,6 @@ export default function Ads() {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // In a real app, you would fetch from your API
-    // fetch('/api/ads')
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     setAds(data);
-    //     setFilteredAds(data);
-    //     setLoading(false);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching ads:', error);
-    //     setLoading(false);
-    //   });
-    
-    // Using mock data for now
     setAds(mockAds);
     setFilteredAds(mockAds);
     setLoading(false);
@@ -67,12 +53,12 @@ export default function Ads() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Зарууд</h1>
+      <h1 className="text-3xl font-bold mb-6">Хандив</h1>
       
       <div className="flex justify-between items-center mb-8">
-        <h2 className="text-xl font-semibold">Сүүлийн зарууд</h2>
-        <Link href="/ads/create" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-          + Шинэ зар нэмэх
+        <h2 className="text-lg font-medium text-gray-500">Сүүлд нэмэгдсэн хандивууд</h2>
+        <Link href="/ads/create" className="bg-[#015198] hover:bg-blue-600 text-white py-2 px-4 rounded">
+          + Хандивлах зүйлсээ нэмэх
         </Link>
       </div>
       
@@ -88,21 +74,21 @@ export default function Ads() {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600"
+            className="bg-[#015198] text-white px-4 py-2 rounded-r-md hover:bg-[#015198]"
           >
             Хайх
           </button>
         </form>
       </div>
       
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="w-full">
         {/* Category filter */}
-        <div className="lg:col-span-1">
+        {/* <div className="lg:col-span-1">
           <CategoryFilter 
             selectedCategory={selectedCategory} 
             onSelectCategory={handleCategorySelect} 
           />
-        </div>
+        </div> */}
         
         {/* Ad listings */}
         <div className="lg:col-span-3">
@@ -111,7 +97,7 @@ export default function Ads() {
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
           ) : filteredAds.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {filteredAds.map((ad) => (
                 <AdCard key={ad.id} ad={ad} />
               ))}

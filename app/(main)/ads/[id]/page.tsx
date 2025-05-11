@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+import Image from 'next/image';
 
 interface Ad {
   id: number;
@@ -41,9 +42,9 @@ export default function AdDetail() {
     
     // Using mock data for now
     const mockAds = [
-      { id: 1, title: 'Машин зарна', description: 'Toyota Prius 20, 2009 он, сайн байдалтай. Дугаар бүртгэлтэй, татвар даатгал хийгдсэн. Хурд хязгаарлагчтай, камертай. Яаралтай зарна.', price: '15,000,000₮', category: 'vehicles', location: 'Улаанбаатар', contactPhone: '9911-1234', contactEmail: 'user@example.com', images: [], createdAt: '2025-05-10' },
-      { id: 2, title: 'Байр түрээслүүлнэ', description: '2 өрөө байр, Баянгол дүүрэг, бүрэн тавилгатай. 4-р давхарт, лифттэй, 24 цагийн харуултай, дулаан, цэвэр бохир усны шугам сайн.', price: '800,000₮/сар', category: 'property', location: 'Улаанбаатар', contactPhone: '8822-5678', contactEmail: '', images: [], createdAt: '2025-05-09' },
-      { id: 3, title: 'Ноутбук зарна', description: 'Macbook Air M1, 256GB, 8GB RAM, шинэ. Баталгаат хугацаа 1 жил үлдсэн. Зөвхөн ажлын зориулалтаар хэрэглэж байсан.', price: '1,200,000₮', category: 'electronics', location: 'Дархан', contactPhone: '9933-9012', contactEmail: 'seller@example.com', images: [], createdAt: '2025-05-08' },
+      { id: 1, title: 'Тоглоом', description: 'Хүүхдийн хэрэглэхээ больсон шинээрээ тоглоомууд байгаамаа хэрэгтэй хүн нь аваарай', price: '', category: '', location: 'Улаанбаатар', contactPhone: '9911-1234', contactEmail: 'user@example.com', images: ['/images/toy.jpg'], createdAt: '2025-05-10' },
+      { id: 2, title: 'Фудволк', description: 'Tabao-аас захиалсан шинээрээ фудволк байгаамаа үүнийг хэрэгтэй хүн нь аваарай', price: '', category: '', location: 'Улаанбаатар', contactPhone: '8822-5678', contactEmail: '', images: ['/images/tshirt.webp'], createdAt: '2025-05-09' },
+      { id: 3, title: 'Гутал', description: 'Шинээрээ байгаамаа ахдаа авсан багадчихлаа авах хүн нь аваарай. Зарж байснаас хэрэгтэй хүнд нь байсан дээр байх', price: '', category: '', location: 'Дархан', contactPhone: '9933-9012', contactEmail: 'seller@example.com', images: ['/images/boots.jpg'], createdAt: '2025-05-08' },
     ];
     
     const foundAd = mockAds.find(a => a.id === parseInt(id));
@@ -89,6 +90,11 @@ export default function AdDetail() {
     );
   }
 
+  // Get the first image or use a placeholder
+  const mainImage = ad.images.length > 0 
+    ? ad.images[0] 
+    : '/images/placeholder.jpg';
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-6">
@@ -101,10 +107,40 @@ export default function AdDetail() {
         {/* Left column - Images */}
         <div className="lg:col-span-2">
           <div className="bg-gray-200 rounded-lg flex items-center justify-center h-96">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
+            {ad.images.length > 0 ? (
+              <Image 
+                src={mainImage} 
+                alt={ad.title} 
+                width={800} 
+                height={600} 
+                className="w-full h-full object-contain rounded-lg"
+              />
+            ) : (
+              <div className="flex flex-col items-center justify-center text-gray-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <p className="mt-2">Зураг байхгүй байна</p>
+              </div>
+            )}
           </div>
+
+          {/* Thumbnail gallery if there are multiple images */}
+          {ad.images.length > 1 && (
+            <div className="mt-4 grid grid-cols-5 gap-2">
+              {ad.images.map((image, index) => (
+                <div key={index} className="bg-gray-200 rounded-md overflow-hidden h-16">
+                  <Image 
+                    src={image} 
+                    alt={`${ad.title} - ${index + 1}`}
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-cover cursor-pointer"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           <div className="mt-8">
             <h2 className="text-2xl font-bold mb-4">Дэлгэрэнгүй</h2>
@@ -121,10 +157,12 @@ export default function AdDetail() {
             <p className="text-green-600 text-2xl font-bold mb-4">{ad.price}</p>
             
             <div className="border-t border-gray-200 pt-4 mt-4">
-              <div className="flex justify-between py-2">
-                <span className="text-gray-600">Ангилал:</span>
-                <span className="font-medium">{categoryNames[ad.category] || ad.category}</span>
-              </div>
+              {ad.category && (
+                <div className="flex justify-between py-2">
+                  <span className="text-gray-600">Ангилал:</span>
+                  <span className="font-medium">{categoryNames[ad.category] || ad.category}</span>
+                </div>
+              )}
               <div className="flex justify-between py-2">
                 <span className="text-gray-600">Байршил:</span>
                 <span className="font-medium">{ad.location}</span>

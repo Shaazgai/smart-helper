@@ -91,39 +91,6 @@ export default function CreateAd() {
               </div>
               
               <div>
-                <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">Үнэ *</label>
-                <input
-                  type="text"
-                  id="price"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                  required
-                  placeholder="₮"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">Ангилал *</label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">Сонгоно уу</option>
-                  <option value="vehicles">Тээврийн хэрэгсэл</option>
-                  <option value="property">Үл хөдлөх хөрөнгө</option>
-                  <option value="electronics">Электрон бараа</option>
-                  <option value="services">Үйлчилгээ</option>
-                  <option value="jobs">Ажлын байр</option>
-                </select>
-              </div>
-              
-              <div>
                 <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">Байршил *</label>
                 <input
                   type="text"
