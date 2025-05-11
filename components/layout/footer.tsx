@@ -4,6 +4,7 @@ import { Globe } from 'lucide-react';
 import Link from 'next/link';
 import { useLanguage } from '@/components/providers/language-provider';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function Footer({ className }: { className?: string }) {
   const { t } = useLanguage();
@@ -17,6 +18,13 @@ export function Footer({ className }: { className?: string }) {
             <Link href="/" className="flex items-center gap-2">
               <Globe className="h-6 w-6 text-primary" />
               <span className="font-bold text-xl">{t('app.title')}</span>
+              {/* <Image
+                src="/images/logo.png" // Replace with actual image path
+                alt="Logo" 
+                width={120}
+                height={40}
+                className="relative mr-60"
+              /> */}
             </Link>
             <p className="text-muted-foreground">
               Өдөр тутмын мэдээлэл, ухаалаг туслах
