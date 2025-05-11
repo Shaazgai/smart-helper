@@ -1,5 +1,30 @@
 // This file can be placed in lib/types.ts for reuse across components
+export interface User {
+  id: string;
+  name: string;
+  username: string;
+  avatar: string;
+}
 
+export interface Comment {
+  id: string;
+  content: string;
+  author: User;
+  createdAt: Date;
+  likes: number;
+  liked: boolean;
+}
+
+export interface Post {
+  id: string;
+  content: string;
+  author: User;
+  createdAt: Date;
+  likes: number;
+  comments: Comment[];
+  liked: boolean;
+  commentCount: number;
+}
 // Ad interface
 export interface Ad {
     id: number;
@@ -84,4 +109,6 @@ export interface Ad {
       contactEmail: 'cleaning@example.com', 
       images: [], 
       createdAt: '2025-05-06' 
-    }]
+    }
+  
+  ]

@@ -35,6 +35,11 @@ export function MainNav({ className }: { className?: string }) {
       label: t('ads'),
       active: pathname === '/ads',
     },
+    {
+      href: '/feed',
+      label: t('feed'),
+      active: pathname === '/feed',
+    },
   ];
 
   return (
