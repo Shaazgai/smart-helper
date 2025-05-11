@@ -72,7 +72,7 @@ export default function FeedPage() {
       {/* <PageHeader /> */}
       
       <main className="container mx-auto max-w-2xl px-4 py-6">
-        <h1 className="mb-6 text-2xl font-bold">Your Feed</h1>
+        <h1 className="mb-6 text-2xl font-bold">Санал гомдлууд</h1>
         
         <section className="space-y-6">
           <CreatePost 
@@ -92,7 +92,7 @@ export default function FeedPage() {
           
           {posts.length === 0 && (
             <div className="rounded-lg border border-dashed p-8 text-center">
-              <p className="text-muted-foreground">No posts yet. Create your first post!</p>
+              <p className="text-muted-foreground">Пост байхгүй байна.</p>
             </div>
           )}
         </section>

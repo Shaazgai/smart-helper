@@ -16,8 +16,11 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { MainNav } from '@/components/layout/main-nav';
+import { useAuth } from '@/context/AuthContext';
+import { Avatar, AvatarImage } from '../ui/avatar';
 
 export function Header() {
+  const {user, isAuthenticated, logout} = useAuth();
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
@@ -176,9 +179,17 @@ export function Header() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          {isAuthenticated ?(
+            <div className='flex flex-row items-center gap-4'>
+            <Avatar>
+              <AvatarImage src='/images/Avatar.png'/>
+            </Avatar>
+            <Button onClick={() => logout()}>Гарах</Button>
+            </div>
+          ) :
           <Button variant="default" asChild>
             <Link href="/login">{t('signin')}</Link>
-          </Button>
+          </Button>}
         </div>
       </div>
     </header>
