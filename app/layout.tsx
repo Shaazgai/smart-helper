@@ -8,7 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Мэдээллийн Портал',
+  title: 'CodeX',
   description: 'Өдөр тутмын мэдээлэл ба ухаалаг туслах',
 };
 
