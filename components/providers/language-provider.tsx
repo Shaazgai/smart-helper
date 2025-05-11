@@ -22,7 +22,7 @@ const translations: Record<Language, Record<string, string>> = {
     'dashboard': 'Нүүр хуудас',
     'news': 'Мэдээ',
     'chat': 'Ухаалаг туслах',
-    'ads': 'Зарууд',
+    'ads': 'Хандив',
     'feed': 'feed',
     'performance': 'Гүйцэтгэл',
     'settings': 'Тохиргоо',
