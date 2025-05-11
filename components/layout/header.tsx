@@ -176,9 +176,9 @@ export function Header() {
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
-          {/* <Button variant="default" asChild>
-            <Link href="/sign-in">{t('signin')}</Link>
-          </Button> */}
+          <Button variant="default" asChild>
+            <Link href="/login">{t('signin')}</Link>
+          </Button>
         </div>
       </div>
     </header>
