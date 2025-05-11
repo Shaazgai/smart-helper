@@ -37,7 +37,7 @@ export function MainNav({ className }: { className?: string }) {
     },
     {
       href: '/feed',
-      label: t('feed'),
+      label: t('Санал гомдол'),
       active: pathname === '/feed',
     },
   ];
@@ -49,9 +49,9 @@ export function MainNav({ className }: { className?: string }) {
           key={route.href}
           href={route.href}
           className={cn(
-            'text-sm font-medium transition-colors hover:text-primary',
+            'text-sm font-medium transition-colors hover:text-[#015198]',
             route.active
-              ? 'text-primary font-semibold'
+              ? 'text-[#015198] font-semibold'
               : 'text-muted-foreground'
           )}
         >

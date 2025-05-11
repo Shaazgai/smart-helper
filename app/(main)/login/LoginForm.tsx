@@ -169,29 +169,6 @@ export default function LoginForm() {
               : 'Хэрэв бүртгэлтэй бол нэвтрэх'}
           </button>
         </div>
-        
-        {/* Social login buttons */}
-        {isLogin && (
-          <div className="mt-6">
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Эсвэл</span>
-              </div>
-            </div>
-            
-            <div className="mt-6 grid grid-cols-1 gap-3">
-              <button className="flex justify-center items-center py-2 px-4 border rounded-md bg-white hover:bg-gray-50">
-                <div className="h-5 w-5 text-blue-500">
-                  G
-                </div>
-                <span className="ml-2 text-black">Google</span>
-              </button>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

@@ -119,8 +119,8 @@ export function Header() {
             </SheetContent>
           </Sheet>
           <Link href="/" className="flex items-center space-x-2 hidden md:flex">
-            <Globe className="h-6 w-6 text-primary" />
-            <span className="font-bold text-xl">{t('app.title')}</span>
+            <Globe className="h-6 w-6 text-[#015198]" />
+            <span className="font-bold text-xl text-[#015198]">{t('app.title')}</span>
           </Link>
           <MainNav className="hidden md:flex" />
         </div>

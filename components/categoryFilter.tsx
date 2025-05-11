@@ -13,7 +13,7 @@ export default function CategoryFilter({ selectedCategory, onSelectCategory }: C
   const categories = Object.entries(categoryNames).map(([id, name]) => ({ id, name }));
 
   return (
-    <div className="bg-gray-700 p-4 rounded-lg shadow-md mb-6">
+    <div className=" p-4 rounded-lg shadow-md mb-6">
       <h2 className="text-lg font-semibold mb-3">Ангилалууд</h2>
       <div className="space-y-2">
         <button
